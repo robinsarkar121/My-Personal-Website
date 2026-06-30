@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robin Sarkar — Aspiring Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+<!-- Animated background grid -->
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+ 
+<!-- Cursor follower -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+ 
+<!-- NAV -->
+<nav class="nav" id="nav">
+    <span class="nav__logo">
+        <span class="nav__logo-bracket">[</span>
+        RS
+        <span class="nav__logo-bracket">]</span>
+    </span>
+    <div class="nav__links">
+        <a href="#about"><span class="link-num">01.</span> About</a>
+        <a href="#skills"><span class="link-num">02.</span> Skills</a>
+        <a href="#projects"><span class="link-num">03.</span> Projects</a>
+        <a href="#contact"><span class="link-num">04.</span> Contact</a>
+        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
+    <button class="nav__hamburger" id="hamburger" aria-label="Menu">☰</button>
+</nav>
+ 
+<!-- HERO -->
+<header class="hero" id="hero">
+    <div class="hero__inner">
+        <div class="hero__text">
+            <p class="hero__greeting" id="greeting">Hello, world. I'm</p>
+            <h1 class="hero__name">
+                <span class="line" id="nameLine1">ROBIN</span>
+                <span class="line accent" id="nameLine2">SARKAR</span>
+            </h1>
+            <p class="hero__tagline" id="tagline">
+                <span class="typewriter" id="typewriter"></span>
+                <span class="typewriter-cursor">|</span>
+            </p>
+            <div class="hero__cta">
+                <a href="#projects" class="btn btn--primary">View Projects</a>
+                <a href="#contact" class="btn btn--ghost">Get In Touch</a>
+            </div>
+            <div class="hero__stats">
+                <div class="stat">
+                    <span class="stat__num">7</span>
+                    <span class="stat__label">Technologies</span>
+                </div>
+                <div class="stat__divider"></div>
+                <div class="stat">
+                    <span class="stat__num">1</span>
+                    <span class="stat__label">Project Built</span>
+                </div>
+                <div class="stat__divider"></div>
+                <div class="stat">
+                    <span class="stat__num">∞</span>
+                    <span class="stat__label">Lines Ahead</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero__visual">
+            <div class="avatar-wrapper">
+                <div class="avatar-ring ring-1"></div>
+                <div class="avatar-ring ring-2"></div>
+                <div class="avatar-ring ring-3"></div>
+                <img class="hero__avatar" src="J-CREW PICTURE.jpg" alt="Robin Sarkar — aspiring developer" />
+                <div class="avatar-badge">
+                    <span>Available</span>
+                </div>
+            </div>
+            <div class="floating-tag tag-1"><span>HTML</span></div>
+            <div class="floating-tag tag-2"><span>CSS</span></div>
+            <div class="floating-tag tag-3"><span>JS</span></div>
+            <div class="floating-tag tag-4"><span>Git</span></div>
+        </div>
+    </div>
+    <div class="scroll-hint">
+        <span>SCROLL</span>
+        <div class="scroll-line"></div>
+    </div>
+</header>
+ 
+<main>
+ 
+    <!-- ABOUT -->
+    <section id="about" class="section reveal">
+        <div class="section__inner">
+            <div class="section__label">// 01 — ABOUT</div>
+            <h2 class="section__title">Who I Am</h2>
+            <div class="about__grid">
+                <div class="about__text">
+                    <p>
+                        Hi! I'm Robin, a student in the <mark>TTPR cohort</mark>. I'm currently 
+                        deep in HTML, CSS, and JavaScript fundamentals, with React, Node, and
+                        the rest of the stack on the road ahead.
+                    </p>
+                    <p>
+                        I like building things that are <em>simple, accessible, and a little bit playful</em>.
+                        Every line of code is a step toward making something that matters.
+                    </p>
+                    <p>Outside of code: <strong>I like playing games</strong>. 🎮</p>
+                    <a href="mailto:you@example.com" class="btn btn--primary" style="margin-top:1.5rem;display:inline-flex;">
+                        Download Resume ↓
+                    </a>
+                </div>
+                <div class="about__terminal">
+                    <div class="terminal">
+                        <div class="terminal__bar">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="terminal__title">robin@dev:~</span>
+                        </div>
+                        <div class="terminal__body">
+                            <p><span class="t-prompt">$</span> <span class="t-cmd">whoami</span></p>
+                            <p class="t-out">Robin Sarkar</p>
+                            <p><span class="t-prompt">$</span> <span class="t-cmd">cat status.txt</span></p>
+                            <p class="t-out">🟢 Actively learning</p>
+                            <p class="t-out">📍 TTPR Cohort</p>
+                            <p class="t-out">🎯 Goal: Full-Stack Dev</p>
+                            <p><span class="t-prompt">$</span> <span class="t-cmd">ls skills/</span></p>
+                            <p class="t-out accent">html/ css/ javascript/</p>
+                            <p class="t-out accent">dom-apis/ git/ responsive/</p>
+                            <p><span class="t-prompt">$</span> <span class="t-cursor">▋</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- SKILLS -->
+    <section id="skills" class="section reveal">
+        <div class="section__inner">
+            <div class="section__label">// 02 — SKILLS</div>
+            <h2 class="section__title">Tech Stack</h2>
+            <p class="section__sub">Tools and technologies I've worked with so far:</p>
+            <div class="skills-grid">
+                <div class="skill-card" data-level="90">
+                    <div class="skill-card__icon">〈/〉</div>
+                    <div class="skill-card__name">HTML</div>
+                    <div class="skill-card__bar"><div class="skill-card__fill" data-width="90"></div></div>
+                    <div class="skill-card__level">Expert</div>
+                </div>
+                <div class="skill-card" data-level="85">
+                    <div class="skill-card__icon">#</div>
+                    <div class="skill-card__name">CSS</div>
+                    <div class="skill-card__bar"><div class="skill-card__fill" data-width="85"></div></div>
+                    <div class="skill-card__level">Advanced</div>
+                </div>
+                <div class="skill-card" data-level="75">
+                    <div class="skill-card__icon">JS</div>
+                    <div class="skill-card__name">JavaScript</div>
+                    <div class="skill-card__bar"><div class="skill-card__fill" data-width="75"></div></div>
+                    <div class="skill-card__level">Intermediate</div>
+                </div>
+                <div class="skill-card" data-level="70">
+                    <div class="skill-card__icon">🔲</div>
+                    <div class="skill-card__name">DOM APIs</div>
+                    <div class="skill-card__bar"><div class="skill-card__fill" data-width="70"></div></div>
+                    <div class="skill-card__level">Intermediate</div>
+                </div>
+                <div class="skill-card" data-level="80">
+                    <div class="skill-card__icon">⎇</div>
+                    <div class="skill-card__name">Git & GitHub</div>
+                    <div class="skill-card__bar"><div class="skill-card__fill" data-width="80"></div></div>
+                    <div class="skill-card__level">Advanced</div>
+                </div>
+                <div class="skill-card" data-level="85">
+                    <div class="skill-card__icon">📱</div>
+                    <div class="skill-card__name">Responsive Design</div>
+                    <div class="skill-card__bar"><div class="skill-card__fill" data-width="85"></div></div>
+                    <div class="skill-card__level">Advanced</div>
+                </div>
+                <div class="skill-card" data-level="95">
+                    <div class="skill-card__icon">◈</div>
+                    <div class="skill-card__name">VS Code</div>
+                    <div class="skill-card__bar"><div class="skill-card__fill" data-width="95"></div></div>
+                    <div class="skill-card__level">Expert</div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- PROJECTS -->
+    <section id="projects" class="section reveal">
+        <div class="section__inner">
+            <div class="section__label">// 03 — PROJECTS</div>
+            <h2 class="section__title">What I've Built</h2>
+            <p class="section__sub">A growing collection of things built while learning.</p>
+            <div id="projects-grid" class="projects-grid"></div>
+        </div>
+    </section>
+ 
+    <!-- CONTACT -->
+    <section id="contact" class="section reveal">
+        <div class="section__inner">
+            <div class="section__label">// 04 — CONTACT</div>
+            <h2 class="section__title">Get In Touch</h2>
+            <div class="contact__grid">
+                <div class="contact__left">
+                    <p>I'm always open to new opportunities, collaborations, and conversations. Whether you have a question, a project idea, or just want to say hi — my inbox is open.</p>
+                    <div class="contact__links">
+                        <a href="mailto:you@example.com" class="contact-link">
+                            <span class="contact-link__icon">📧</span>
+                            <div>
+                                <span class="contact-link__label">Email</span>
+                                <span class="contact-link__val">you@example.com</span>
+                            </div>
+                            <span class="contact-link__arrow">→</span>
+                        </a>
+                        <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="contact-link">
+                            <span class="contact-link__icon">🐙</span>
+                            <div>
+                                <span class="contact-link__label">GitHub</span>
+                                <span class="contact-link__val">github.com/yourusername</span>
+                            </div>
+                            <span class="contact-link__arrow">→</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/sarkar-robin1/" target="_blank" rel="noopener" class="contact-link">
+                            <span class="contact-link__icon">💼</span>
+                            <div>
+                                <span class="contact-link__label">LinkedIn</span>
+                                <span class="contact-link__val">linkedin.com/in/sarkar-robin1</span>
+                            </div>
+                            <span class="contact-link__arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact__cta-box">
+                    <div class="cta-box">
+                        <p class="cta-box__title">Let's build something together</p>
+                        <p class="cta-box__sub">Currently open to internship opportunities and junior dev roles.</p>
+                        <a href="mailto:you@example.com" class="btn btn--primary">Send a Message →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+</main>
+ 
+<footer class="footer">
+    <div class="footer__inner">
+        <span class="footer__logo">[RS]</span>
+        <p>&copy; <span id="year"></span> Robin Sarkar — Built from scratch with 💚</p>
+        <p class="footer__note">// Designed & coded by Robin Sarkar</p>
+    </div>
+</footer>
+ 
+<script src="script.js"></script>
+</body>
+</html>
