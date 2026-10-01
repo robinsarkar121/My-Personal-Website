@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Robin Sarkar — Aspiring Developer</title>
+    <meta name="description" content="Robin Sarkar — aspiring full-stack developer in the TTPR cohort, building for the web with HTML, CSS, and JavaScript.">
+    <meta name="theme-color" content="#080d0a">
+    <meta property="og:title" content="Robin Sarkar — Aspiring Developer">
+    <meta property="og:description" content="Aspiring full-stack developer building for the web with HTML, CSS, and JavaScript.">
+    <meta property="og:image" content="profile.jpg">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080d0a'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='700' text-anchor='middle' fill='%2339ff7e'%3ERS%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -28,12 +34,14 @@
     </span>
     <div class="nav__links">
         <a href="#about"><span class="link-num">01.</span> About</a>
-        <a href="#skills"><span class="link-num">02.</span> Skills</a>
-        <a href="#projects"><span class="link-num">03.</span> Projects</a>
-        <a href="#contact"><span class="link-num">04.</span> Contact</a>
+        <a href="#experience"><span class="link-num">02.</span> Experience</a>
+        <a href="#skills"><span class="link-num">03.</span> Skills</a>
+        <a href="#projects"><span class="link-num">04.</span> Projects</a>
+        <a href="#contact"><span class="link-num">05.</span> Contact</a>
         <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
     </div>
-    <button class="nav__hamburger" id="hamburger" aria-label="Menu">☰</button>
+    <button class="nav__hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">☰</button>
+    <div class="scroll-progress" id="scrollProgress"></div>
 </nav>
  
 <!-- HERO -->
@@ -55,13 +63,13 @@
             </div>
             <div class="hero__stats">
                 <div class="stat">
-                    <span class="stat__num">7</span>
+                    <span class="stat__num">8</span>
                     <span class="stat__label">Technologies</span>
                 </div>
                 <div class="stat__divider"></div>
                 <div class="stat">
-                    <span class="stat__num">1</span>
-                    <span class="stat__label">Project Built</span>
+                    <span class="stat__num">3</span>
+                    <span class="stat__label">Projects Built</span>
                 </div>
                 <div class="stat__divider"></div>
                 <div class="stat">
@@ -75,7 +83,7 @@
                 <div class="avatar-ring ring-1"></div>
                 <div class="avatar-ring ring-2"></div>
                 <div class="avatar-ring ring-3"></div>
-                <img class="hero__avatar" src="J-CREW PICTURE.jpg" alt="Robin Sarkar — aspiring developer" />
+                <img class="hero__avatar" src="profile.jpg" width="800" height="1200" alt="Robin Sarkar — aspiring developer" />
                 <div class="avatar-badge">
                     <span>Available</span>
                 </div>
@@ -102,16 +110,18 @@
             <div class="about__grid">
                 <div class="about__text">
                     <p>
-                        Hi! I'm Robin, a student in the <mark>TTPR cohort</mark>. I'm currently 
+                        Hi! I'm Robin, a computer science student at <mark>LaGuardia Community College</mark>
+                        in Queens, NY, and part of the <mark>TTPR cohort</mark>. I'm currently
                         deep in HTML, CSS, and JavaScript fundamentals, with React, Node, and
                         the rest of the stack on the road ahead.
                     </p>
                     <p>
                         I like building things that are <em>simple, accessible, and a little bit playful</em>.
-                        Every line of code is a step toward making something that matters.
+                        My long-term goal is to build a tech startup that combines innovation and
+                        problem-solving to create meaningful impact.
                     </p>
-                    <p>Outside of code: <strong>I like playing games</strong>. 🎮</p>
-                    <a href="mailto:you@example.com" class="btn btn--primary" style="margin-top:1.5rem;display:inline-flex;">
+                    <p>Outside of code: <strong>gaming, soccer, fishing, hiking, and traveling</strong>. 🎮</p>
+                    <a href="Robin_Sarkar_Resume.pdf" download class="btn btn--primary" style="margin-top:1.5rem;display:inline-flex;">
                         Download Resume ↓
                     </a>
                 </div>
@@ -128,7 +138,8 @@
                             <p class="t-out">Robin Sarkar</p>
                             <p><span class="t-prompt">$</span> <span class="t-cmd">cat status.txt</span></p>
                             <p class="t-out">🟢 Actively learning</p>
-                            <p class="t-out">📍 TTPR Cohort</p>
+                            <p class="t-out">📍 Queens, NY · TTPR Cohort</p>
+                            <p class="t-out">🎓 LaGuardia CC — A.S., Dec 2026</p>
                             <p class="t-out">🎯 Goal: Full-Stack Dev</p>
                             <p><span class="t-prompt">$</span> <span class="t-cmd">ls skills/</span></p>
                             <p class="t-out accent">html/ css/ javascript/</p>
@@ -141,10 +152,93 @@
         </div>
     </section>
  
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section reveal">
+        <div class="section__inner">
+            <div class="section__label">// 02 — EXPERIENCE</div>
+            <h2 class="section__title">Where I've Worked</h2>
+            <p class="section__sub">Roles in tech support, venture capital, campus life, and marketing.</p>
+            <div class="timeline">
+                <article class="timeline__item">
+                    <div class="timeline__head">
+                        <h3 class="timeline__role">Student Technology Mentor</h3>
+                        <span class="timeline__date">Sep 2026 – Present</span>
+                    </div>
+                    <p class="timeline__org">LaGuardia Community College · Long Island City, NY</p>
+                    <ul class="timeline__list">
+                        <li>Guide students one-on-one through tech hurdles, from troubleshooting laptops and Wi-Fi to navigating campus software.</li>
+                        <li>Deliver walk-in and scheduled tech support sessions for students and faculty.</li>
+                        <li>Support First Year Seminar classes by troubleshooting in-classroom tech issues.</li>
+                    </ul>
+                </article>
+                <article class="timeline__item">
+                    <div class="timeline__head">
+                        <h3 class="timeline__role">Venture Capital Intern</h3>
+                        <span class="timeline__date">Jun 2026 – Aug 2026</span>
+                    </div>
+                    <p class="timeline__org">Plum Alley · New York City, NY</p>
+                    <ul class="timeline__list">
+                        <li>Built a web scraper to collect and structure venture ecosystem data, mapping people, firms, and programs.</li>
+                        <li>Developed a CRM-ready relationship-mapping platform that turned raw research into warm, thesis-aligned deal introductions.</li>
+                        <li>Researched late-seed and Series A opportunities and presented findings and priority targets to the team.</li>
+                    </ul>
+                </article>
+                <article class="timeline__item">
+                    <div class="timeline__head">
+                        <h3 class="timeline__role">Student Ambassador</h3>
+                        <span class="timeline__date">Sep 2025 – May 2026</span>
+                    </div>
+                    <p class="timeline__org">President's Society, LaGuardia Community College · Long Island City, NY</p>
+                    <ul class="timeline__list">
+                        <li>Represented the college at donor events and institutional functions.</li>
+                        <li>Built professional relationships with industry leaders through networking events.</li>
+                    </ul>
+                </article>
+                <article class="timeline__item">
+                    <div class="timeline__head">
+                        <h3 class="timeline__role">Jr. Campus Life Assistant</h3>
+                        <span class="timeline__date">Mar 2025 – Jun 2026</span>
+                    </div>
+                    <p class="timeline__org">LaGuardia Community College, Office of Campus Life · Long Island City, NY</p>
+                    <ul class="timeline__list">
+                        <li>Connected students with academic and campus life resources and support services.</li>
+                        <li>Organized student events, workshops, and leadership programs with Campus Life staff.</li>
+                    </ul>
+                </article>
+                <article class="timeline__item">
+                    <div class="timeline__head">
+                        <h3 class="timeline__role">Marketing Intern</h3>
+                        <span class="timeline__date">Oct 2024 – Dec 2024</span>
+                    </div>
+                    <p class="timeline__org">Sweet Vegan NYC · Harlem, NY</p>
+                    <ul class="timeline__list">
+                        <li>Developed and ran digital marketing campaigns and social content for handcrafted chocolate products.</li>
+                        <li>Conducted market research on competitors, target demographics, and seasonal trends.</li>
+                    </ul>
+                </article>
+            </div>
+
+            <div class="edu-card">
+                <div class="timeline__head">
+                    <h3 class="timeline__role">Associate of Science</h3>
+                    <span class="timeline__date">Expected Dec 2026</span>
+                </div>
+                <p class="timeline__org">LaGuardia Community College · Long Island City, NY</p>
+                <div class="chip-row">
+                    <span class="project-card__tag">GPA 3.64</span>
+                    <span class="project-card__tag">Dean's List</span>
+                    <span class="project-card__tag">Phi Theta Kappa</span>
+                    <span class="project-card__tag">LaGuardia Foundation Scholarship</span>
+                </div>
+                <p class="edu-card__note">Coursework: Advanced C &amp; C++ Programming · OOP Using Java · Python Programming · Website Development</p>
+            </div>
+        </div>
+    </section>
+
     <!-- SKILLS -->
     <section id="skills" class="section reveal">
         <div class="section__inner">
-            <div class="section__label">// 02 — SKILLS</div>
+            <div class="section__label">// 03 — SKILLS</div>
             <h2 class="section__title">Tech Stack</h2>
             <p class="section__sub">Tools and technologies I've worked with so far:</p>
             <div class="skills-grid">
@@ -164,6 +258,12 @@
                     <div class="skill-card__icon">JS</div>
                     <div class="skill-card__name">JavaScript</div>
                     <div class="skill-card__bar"><div class="skill-card__fill" data-width="75"></div></div>
+                    <div class="skill-card__level">Intermediate</div>
+                </div>
+                <div class="skill-card" data-level="70">
+                    <div class="skill-card__icon">Py</div>
+                    <div class="skill-card__name">Python</div>
+                    <div class="skill-card__bar"><div class="skill-card__fill" data-width="70"></div></div>
                     <div class="skill-card__level">Intermediate</div>
                 </div>
                 <div class="skill-card" data-level="70">
@@ -191,13 +291,30 @@
                     <div class="skill-card__level">Expert</div>
                 </div>
             </div>
+            <div class="skills-extra">
+                <div>
+                    <p class="skills-extra__label">Also studied</p>
+                    <div class="chip-row">
+                        <span class="project-card__tag">C &amp; C++</span>
+                        <span class="project-card__tag">Java (OOP)</span>
+                    </div>
+                </div>
+                <div>
+                    <p class="skills-extra__label">Spoken languages</p>
+                    <div class="chip-row">
+                        <span class="project-card__tag">English — Fluent</span>
+                        <span class="project-card__tag">Bengali — Native</span>
+                        <span class="project-card__tag">Hindi — Fluent</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
  
     <!-- PROJECTS -->
     <section id="projects" class="section reveal">
         <div class="section__inner">
-            <div class="section__label">// 03 — PROJECTS</div>
+            <div class="section__label">// 04 — PROJECTS</div>
             <h2 class="section__title">What I've Built</h2>
             <p class="section__sub">A growing collection of things built while learning.</p>
             <div id="projects-grid" class="projects-grid"></div>
@@ -207,25 +324,25 @@
     <!-- CONTACT -->
     <section id="contact" class="section reveal">
         <div class="section__inner">
-            <div class="section__label">// 04 — CONTACT</div>
+            <div class="section__label">// 05 — CONTACT</div>
             <h2 class="section__title">Get In Touch</h2>
             <div class="contact__grid">
                 <div class="contact__left">
                     <p>I'm always open to new opportunities, collaborations, and conversations. Whether you have a question, a project idea, or just want to say hi — my inbox is open.</p>
                     <div class="contact__links">
-                        <a href="mailto:you@example.com" class="contact-link">
+                        <a href="mailto:robinsarkar2005@gmail.com" class="contact-link">
                             <span class="contact-link__icon">📧</span>
                             <div>
                                 <span class="contact-link__label">Email</span>
-                                <span class="contact-link__val">you@example.com</span>
+                                <span class="contact-link__val">robinsarkar2005@gmail.com</span>
                             </div>
                             <span class="contact-link__arrow">→</span>
                         </a>
-                        <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="contact-link">
+                        <a href="https://github.com/robinsarkar121" target="_blank" rel="noopener" class="contact-link">
                             <span class="contact-link__icon">🐙</span>
                             <div>
                                 <span class="contact-link__label">GitHub</span>
-                                <span class="contact-link__val">github.com/yourusername</span>
+                                <span class="contact-link__val">github.com/robinsarkar121</span>
                             </div>
                             <span class="contact-link__arrow">→</span>
                         </a>
@@ -243,7 +360,7 @@
                     <div class="cta-box">
                         <p class="cta-box__title">Let's build something together</p>
                         <p class="cta-box__sub">Currently open to internship opportunities and junior dev roles.</p>
-                        <a href="mailto:you@example.com" class="btn btn--primary">Send a Message →</a>
+                        <a href="mailto:robinsarkar2005@gmail.com" class="btn btn--primary">Send a Message →</a>
                     </div>
                 </div>
             </div>

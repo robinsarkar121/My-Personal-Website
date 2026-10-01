@@ -10,13 +10,21 @@ console.log("Portfolio script loaded ✅ — Robin Sarkar");
 const cursorDot = document.getElementById("cursorDot");
 const cursorRing = document.getElementById("cursorRing");
  
-if (window.innerWidth > 900 && cursorDot && cursorRing) {
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const hasMouse = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+if (hasMouse && cursorDot && cursorRing) {
     let mouseX = 0, mouseY = 0;
     let ringX = 0, ringY = 0;
- 
+
     document.addEventListener("mousemove", (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+        // Swap to the custom cursor only once the mouse has actually moved
+        if (!document.body.classList.contains("has-cursor")) {
+            ringX = mouseX; ringY = mouseY;
+            document.body.classList.add("has-cursor");
+        }
         cursorDot.style.left = mouseX + "px";
         cursorDot.style.top = mouseY + "px";
     });
@@ -37,10 +45,20 @@ if (window.innerWidth > 900 && cursorDot && cursorRing) {
 const themeToggle = document.querySelector("#theme-toggle");
  
 if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        const isDark = document.body.classList.contains("dark-mode");
+    const applyTheme = (isDark) => {
+        document.body.classList.toggle("dark-mode", isDark);
         themeToggle.textContent = isDark ? "☀️" : "🌙";
+    };
+
+    // Remember the choice between visits
+    let savedTheme = null;
+    try { savedTheme = localStorage.getItem("theme"); } catch (e) {}
+    applyTheme(savedTheme === "dark");
+
+    themeToggle.addEventListener("click", () => {
+        const isDark = !document.body.classList.contains("dark-mode");
+        applyTheme(isDark);
+        try { localStorage.setItem("theme", isDark ? "dark" : "light"); } catch (e) {}
         console.log(`Theme → ${isDark ? "dark" : "light"}`);
     });
 }
@@ -52,18 +70,41 @@ const nav = document.getElementById("nav");
 const hamburger = document.getElementById("hamburger");
 const navLinks = document.querySelector(".nav__links");
  
-window.addEventListener("scroll", () => {
+const scrollProgress = document.getElementById("scrollProgress");
+
+function onScroll() {
     nav.classList.toggle("scrolled", window.scrollY > 30);
-});
- 
+    if (scrollProgress) {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        scrollProgress.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+    }
+}
+window.addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
 if (hamburger && navLinks) {
+    const setMenu = (open) => {
+        navLinks.classList.toggle("open", open);
+        hamburger.setAttribute("aria-expanded", open);
+        hamburger.textContent = open ? "✕" : "☰";
+    };
     hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("open");
+        setMenu(!navLinks.classList.contains("open"));
     });
     navLinks.querySelectorAll("a").forEach(a => {
-        a.addEventListener("click", () => navLinks.classList.remove("open"));
+        a.addEventListener("click", () => setMenu(false));
     });
 }
+
+// Highlight the nav link for the section currently on screen
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const link = document.querySelector(`.nav__links a[href="#${entry.target.id}"]`);
+        if (link) link.classList.toggle("active", entry.isIntersecting);
+    });
+}, { rootMargin: "-45% 0px -55% 0px" });
+
+document.querySelectorAll("main section[id]").forEach(s => sectionObserver.observe(s));
  
 // ============================================
 // TYPEWRITER EFFECT
@@ -91,7 +132,11 @@ function typeLoop() {
         setTimeout(typeLoop, 65);
     }
 }
-setTimeout(typeLoop, 1500);
+if (prefersReducedMotion) {
+    if (typeEl) typeEl.textContent = phrases[0];
+} else {
+    setTimeout(typeLoop, 1500);
+}
  
 // ============================================
 // SCROLL REVEAL
@@ -113,9 +158,9 @@ document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
 const skillObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.querySelectorAll(".skill-card__fill").forEach(bar => {
+            entry.target.querySelectorAll(".skill-card__fill").forEach((bar, i) => {
                 const w = bar.getAttribute("data-width");
-                setTimeout(() => { bar.style.width = w + "%"; }, 200);
+                setTimeout(() => { bar.style.width = w + "%"; }, 200 + i * 90);
             });
             skillObserver.unobserve(entry.target);
         }
@@ -132,10 +177,20 @@ const projects = [
     {
         title: "Personal Portfolio",
         description: "This very site — built from scratch using semantic HTML5, modern CSS (custom properties, Grid, Flexbox), and vanilla JavaScript. My first cohort lab turned into something I'm genuinely proud of.",
-        link: "#",
+        link: "https://github.com/robinsarkar121/My-Personal-Website",
         tags: ["HTML", "CSS", "JavaScript", "Responsive"],
     },
-    // Uncomment and fill in when you build more:
+    {
+        title: "Venture Ecosystem Web Scraper",
+        description: "Built during my internship at Plum Alley. Collects and structures venture ecosystem data — people, firms, and programs — to surface high-value introduction pathways for deal sourcing.",
+        tags: ["Python", "Web Scraping", "Data"],
+    },
+    {
+        title: "Relationship-Mapping Platform",
+        description: "A CRM-ready tool, also built at Plum Alley, that turns raw investor research into a structured map of connections, helping convert them into warm, thesis-aligned deal introductions.",
+        tags: ["Python", "CRM", "Research Tooling"],
+    },
+    // Uncomment and fill in when you build more (link is optional):
     // {
     //     title: "Next Project",
     //     description: "Description of the next thing I build.",
@@ -167,14 +222,27 @@ if (grid) {
             tagList.appendChild(tag);
         });
  
-        const link = document.createElement("a");
-        link.className = "project-card__link";
-        link.href = project.link;
-        link.textContent = "View project →";
-        link.setAttribute("target", "_blank");
-        link.setAttribute("rel", "noopener");
- 
-        card.append(title, desc, tagList, link);
+        card.append(title, desc, tagList);
+
+        if (project.link) {
+            const link = document.createElement("a");
+            link.className = "project-card__link";
+            link.href = project.link;
+            link.textContent = "View project →";
+            if (project.link.startsWith("http")) {
+                link.setAttribute("target", "_blank");
+                link.setAttribute("rel", "noopener");
+            }
+            card.append(link);
+        }
+
+        // Glow follows the mouse across the card
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+            card.style.setProperty("--my", `${e.clientY - rect.top}px`);
+        });
+
         grid.appendChild(card);
     });
  
